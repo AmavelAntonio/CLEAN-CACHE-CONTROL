@@ -8,3 +8,4 @@ module.exports = {
         '@/(.*)': '<rootDir>src/$1'
     }
 }
+
