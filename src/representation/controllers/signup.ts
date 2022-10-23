@@ -11,21 +11,5 @@ export class SignUpController implements Controller {
                 return badRequest(new MissingParamsError(field))
             }
         }
-    }
-
-     /*
-        if(!httpRequest.body.name){
-            return badRequest(new MissingParamsError('name'))
-        }    
-
-        if(!httpRequest.body.email){
-            return badRequest(new MissingParamsError('email'))
-        }
-
-        if(!httpRequest.body.confirmPassword){
-            return badRequest(new MissingParamsError('confirmPassword'))
-        }
-       */
-
-    
+    } 
 }
