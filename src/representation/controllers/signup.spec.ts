@@ -1,7 +1,15 @@
 import { SignUpController } from './signup'
 import { MissingParamsError } from '../error/missing-param';
+import { InvalidEmailError } from '../error/InvalidEmail-param';
 
 const makeSut = (): SignUpController => {
+    class EmailValidator {
+        isVlaid(email: string): boolean {
+            return true
+        }
+    }
+
+    const emailValidator = new EmailValidator();
     return new SignUpController()
 }
 
