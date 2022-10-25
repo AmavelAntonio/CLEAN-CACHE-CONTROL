@@ -4,6 +4,7 @@ import { badRequest } from "../helper/http-helper"
 import { Controller } from "../protocolos/controller"
 import { EmailValidator } from "../protocolos/email-validator"
 import { InvalidEmailError } from "../error/InvalidEmail-param"
+
 export class SignUpController implements Controller {
     private readonly emailValidator: EmailValidator; 
 
@@ -20,9 +21,9 @@ export class SignUpController implements Controller {
         }
 
         const isValid = this.emailValidator.isValid(httpRequest.body.email)
+        
         if(!isValid){
             return badRequest(new InvalidEmailError('email'))
         }
-    
     } 
 }

@@ -13,7 +13,7 @@ const makeSut = (): SutTypes => {
     class EmailValidatorStub implements EmailValidator {
         isValid(email: string): boolean {
             return true
-        }
+        } 
     }
 
     const emailValidatorStub = new EmailValidatorStub();
@@ -34,6 +34,7 @@ describe('SignUpController', () => {
                 confirmPassword: "any_password"
             }
         }
+
         const httpReponse = sut.handle(httpRequest)
         expect(httpReponse.statusCode).toBe(400)
         expect(httpReponse.body).toEqual(new MissingParamsError('name'))
@@ -83,5 +84,23 @@ describe('SignUpController', () => {
         const httpReponse = sut.handle(httpRequest)
         expect(httpReponse.statusCode).toBe(400)
         expect(httpReponse.body).toEqual(new InvalidEmailError('email'))
+    })
+
+    test('Should call emailValidator with correct email', () => {
+        const {sut, emailValidatorStub} = makeSut();
+        const isValidSpy = jest.spyOn(emailValidatorStub, 'isValid')
+
+        const httpRequest = {
+            body: {
+                name: "any_name", 
+                email: "any_email",
+                password: "any_Password",
+                confirmPassword: "any_Password"
+            }
+        }
+
+
+        sut.handle(httpRequest)
+        expect(isValidSpy).toBeCalledWith('any_email') 
     })
 })
