@@ -5,7 +5,7 @@ import { EmailValidator } from '../protocolos/email-validator';
 import { ServerError } from '../error/server-error';
 import { AccountModel } from '../../domain/models/Account'
 import { AddAccountModel, AddAccount } from '../../domain/usercases/add-account'
-
+import { AccountCity } from '../../domain/models/Account';
 
 
 const makeEmailValidator = () => {

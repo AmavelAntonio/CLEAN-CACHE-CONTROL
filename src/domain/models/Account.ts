@@ -5,3 +5,10 @@ export interface AccountModel {
     email: string
     password: string
 }
+
+export interface AccountCity {
+    name: string
+    populacao: number
+    pais?: string
+    continente?: string
+}
